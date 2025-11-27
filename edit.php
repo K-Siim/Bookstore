@@ -33,8 +33,39 @@ $authors = $stmt->fetchAll();
 <body>
     <form action="update.php" method="post">
         <input type="hidden" name="id" value="<?= $id; ?>">
-        <input type="text" name="title" value="<?= $book['title']; ?>">
-        <br><br>
+        <div>
+            <label for="title">Pealkiri:</label>
+            <input type="text" name="title" id="title" value="<?= htmlspecialchars($book['title']); ?>">
+        </div>
+        <div>
+            <label for="year">Aasta:</label>
+            <input type="text" name="year" id="year" value="<?= htmlspecialchars($book['year'] ?? ''); ?>">
+        </div>
+        <div>
+            <label for="publisher">Kirjastus:</label>
+            <input type="text" name="publisher" id="publisher" value="<?= htmlspecialchars($book['publisher'] ?? ''); ?>">
+        </div>
+        <div>
+            <label for="isbn">ISBN:</label>
+            <input type="text" name="isbn" id="isbn" value="<?= htmlspecialchars($book['isbn'] ?? ''); ?>">
+        </div>
+        <div>
+            <label for="price">Hind:</label>
+            <input type="text" name="price" id="price" value="<?= htmlspecialchars($book['price'] ?? ''); ?>">
+        </div>
+        <div>
+            <label for="quantity">Kogus:</label>
+            <input type="text" name="quantity" id="quantity" value="<?= htmlspecialchars($book['quantity'] ?? ''); ?>">
+        </div>
+        <div>
+            <label for="description">Kirjeldus:</label>
+            <textarea name="description" id="description"><?= htmlspecialchars($book['description'] ?? ''); ?></textarea>
+        </div>
+        <div>
+            <label for="image">Pildi URL:</label>
+            <input type="text" name="image" id="image" value="<?= htmlspecialchars($book['image'] ?? ''); ?>">
+        </div>
+        <br>
         <button type="submit" name="action" value="save">Salvesta</button>
     </form>
     
@@ -73,6 +104,9 @@ $authors = $stmt->fetchAll();
         </select>
         <button type="submit" name="action" value="add-author">Lisa</button>
     </form>
+    
+    <br>
+    <p><a href="create-author.php">Lisa uus autor andmebaasi</a></p>
 
 </body>
 </html>

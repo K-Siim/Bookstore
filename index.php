@@ -35,6 +35,8 @@ $books = $stmt->fetchAll();
 
     <hr>
 
+    <p><a href="create-author.php">Lisa uus autor</a></p>
+
     <?php if (count($books) === 0): ?>
         <p>Raamatuid ei leitud.</p>
     <?php else: ?>
