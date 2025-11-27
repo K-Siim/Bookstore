@@ -89,7 +89,7 @@ $authors = $stmt->fetchAll();
     </ul>
 
     <br>
-
+    
     <div>
         Lisa autor:
     </div>
@@ -107,6 +107,7 @@ $authors = $stmt->fetchAll();
     
     <br>
     <p><a href="create-author.php">Lisa uus autor andmebaasi</a></p>
+    <a href="index.php">Tagasi pealehele</a>
 
 </body>
 </html>
