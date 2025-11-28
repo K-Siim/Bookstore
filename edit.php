@@ -46,12 +46,8 @@ $authors = $stmt->fetchAll();
             <input type="text" name="publisher" id="publisher" value="<?= htmlspecialchars($book['publisher'] ?? ''); ?>">
         </div>
         <div>
-            <label for="isbn">ISBN:</label>
-            <input type="text" name="isbn" id="isbn" value="<?= htmlspecialchars($book['isbn'] ?? ''); ?>">
-        </div>
-        <div>
             <label for="price">Hind:</label>
-            <input type="text" name="price" id="price" value="<?= htmlspecialchars($book['price'] ?? ''); ?>">
+            <input type="text" name="price" id="price" value="<?= ($book['price'],2  ?? ''); ?>">
         </div>
         <div>
             <label for="quantity">Kogus:</label>
