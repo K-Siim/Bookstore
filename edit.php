@@ -12,6 +12,7 @@ $id = $_GET['id'];
 $stmt = $pdo->prepare('SELECT * FROM books WHERE id = :id');
 $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
+var_dump($book);
 
 $stmt = $pdo->prepare('SELECT a.id, first_name, last_name FROM book_authors ba LEFT JOIN authors a ON ba.author_id = a.id WHERE book_id = :book_id;');
 $stmt->execute(['book_id' => $id]);
@@ -39,27 +40,23 @@ $authors = $stmt->fetchAll();
         </div>
         <div>
             <label for="year">Aasta:</label>
-            <input type="text" name="year" id="year" value="<?= htmlspecialchars($book['year'] ?? ''); ?>">
-        </div>
-        <div>
-            <label for="publisher">Kirjastus:</label>
-            <input type="text" name="publisher" id="publisher" value="<?= htmlspecialchars($book['publisher'] ?? ''); ?>">
+            <input type="text" name="year" id="year" value="<?= htmlspecialchars($book['release_date'] ?? ''); ?>">
         </div>
         <div>
             <label for="price">Hind:</label>
-            <input type="text" name="price" id="price" value="<?= ($book['price'],2  ?? ''); ?>">
+            <input type="text" name="price" id="price" value="<?= round($book['price'] ?? 0, 2); ?>">
         </div>
         <div>
             <label for="quantity">Kogus:</label>
-            <input type="text" name="quantity" id="quantity" value="<?= htmlspecialchars($book['quantity'] ?? ''); ?>">
+            <input type="text" name="quantity" id="quantity" value="<?= htmlspecialchars($book['stock_saldo'] ?? ''); ?>">
         </div>
         <div>
             <label for="description">Kirjeldus:</label>
-            <textarea name="description" id="description"><?= htmlspecialchars($book['description'] ?? ''); ?></textarea>
+            <textarea name="description" id="description"><?= htmlspecialchars($book['summary'] ?? ''); ?></textarea>
         </div>
         <div>
             <label for="image">Pildi URL:</label>
-            <input type="text" name="image" id="image" value="<?= htmlspecialchars($book['image'] ?? ''); ?>">
+            <input type="text" name="image" id="image" value="<?= htmlspecialchars($book['cover_path'] ?? ''); ?>">
         </div>
         <br>
         <button type="submit" name="action" value="save">Salvesta</button>
